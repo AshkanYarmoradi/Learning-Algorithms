@@ -20,7 +20,11 @@ namespace LearningAlgorithms.Chapter1
         {
             var array = _arrayGenerator.Generate<int>(2000000);
 
-            var result = await _mediator.Send(new LargestValueArrayRequest(array));
+            var largest = await _mediator.Send(new LargestRequest(array));
+
+            var largestNative = await _mediator.Send(new LargestNativeRequest(array));
+            
+            var largestAlternative = await _mediator.Send(new LargestAlternateRequest(array));
         }
     }
 }
