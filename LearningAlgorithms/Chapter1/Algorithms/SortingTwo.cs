@@ -6,9 +6,9 @@ using LearningAlgorithms.Chapter1.Dtos;
 
 namespace LearningAlgorithms.Chapter1.Algorithms
 {
-    public class LargestTwoRequest : RequestAbstract<LargestTwoDto>
+    public class SortingTwoRequest : RequestAbstract<LargestTwoDto>
     {
-        public LargestTwoRequest(int[] array)
+        public SortingTwoRequest(int[] array)
         {
             Array = array;
         }
@@ -16,30 +16,12 @@ namespace LearningAlgorithms.Chapter1.Algorithms
         public int[] Array { get; set; }
     }
     
-    public class LargestTwoHandler: RequestHandlerAbstract<LargestTwoRequest, LargestTwoDto>
+    public class SortingTwoHandler: RequestHandlerAbstract<SortingTwoRequest, LargestTwoDto>
     {
-        public override Task<LargestTwoDto> Handle(LargestTwoRequest request, CancellationToken cancellationToken)
+        public override Task<LargestTwoDto> Handle(SortingTwoRequest request, CancellationToken cancellationToken)
         {
-            var max = request.Array[0];
-            var second = request.Array[1];
-            if (second > max)
-            {
-                max = request.Array[1];
-                second = request.Array[0];
-            }
-
-            foreach (var idx in Enumerable.Range(2, (request.Array.Length - 2)))
-            {
-                if (max < request.Array[idx])
-                {
-                    max = request.Array[idx];
-                }else if (second < request.Array[idx])
-                {
-                    second = request.Array[idx];
-                }
-            }
-
-            return Task.FromResult(new LargestTwoDto(max, second));
+            var sortedArray = request.Array.OrderByDescending(x=>x).ToArray();
+            return Task.FromResult(new LargestTwoDto(sortedArray[0], sortedArray[1]));
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using LearningAlgorithms.Abstracts;
@@ -6,9 +7,9 @@ using LearningAlgorithms.Chapter1.Dtos;
 
 namespace LearningAlgorithms.Chapter1.Algorithms
 {
-    public class SortingTwoRequest : RequestAbstract<LargestTwoDto>
+    public class DoubleTwoRequest : RequestAbstract<LargestTwoDto>
     {
-        public SortingTwoRequest(int[] array)
+        public DoubleTwoRequest(int[] array)
         {
             Array = array;
         }
@@ -16,12 +17,13 @@ namespace LearningAlgorithms.Chapter1.Algorithms
         public int[] Array { get; set; }
     }
     
-    public class SortingTwoHandler: RequestHandlerAbstract<SortingTwoRequest, LargestTwoDto>
+    public class SDoubleTwoHandler: RequestHandlerAbstract<DoubleTwoRequest, LargestTwoDto>
     {
-        public override Task<LargestTwoDto> Handle(SortingTwoRequest request, CancellationToken cancellationToken)
+        public override Task<LargestTwoDto> Handle(DoubleTwoRequest request, CancellationToken cancellationToken)
         {
-            var sortedArray = request.Array.OrderByDescending(x=>x).ToArray();
-            return Task.FromResult(new LargestTwoDto(sortedArray[0], sortedArray[1]));
+            var max = request.Array.Max(x => x);
+            request.Array = request.Array.Where((_, index) => index != Array.IndexOf(request.Array, max)).ToArray();
+            return Task.FromResult(new LargestTwoDto(max, request.Array.Max(x => x)));
         }
     }
 }
