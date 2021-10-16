@@ -39,6 +39,16 @@ namespace LearningAlgorithms.Chapter1
             var doubleTwo = await _mediator.Send(new DoubleTwoRequest(array));
             
             var mutableTwo = await _mediator.Send(new MutableTwoRequest(array));
+            
+            var tournamentTwo = await _mediator.Send(new TournamentTwoRequest(array));
+        }
+
+        [Fact]
+        public async Task TestTournament()
+        {
+            var array = _arrayGenerator.Generate<int>(8);
+
+            var tournamentTwo = await _mediator.Send(new TournamentTwoRequest(array));
         }
     }
 }
