@@ -6,11 +6,11 @@ using Xunit;
 
 namespace LearningAlgorithms.Chapter1
 {
-    public class Test : UnitTestBase
+    public class TestChapter1 : UnitTestBase
     {
         private readonly IArrayGenerator _arrayGenerator;
         
-        public Test()
+        public TestChapter1()
         {
             _arrayGenerator = _serviceProvider.GetRequiredService<IArrayGenerator>();
         }
