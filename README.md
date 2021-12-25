@@ -13,7 +13,6 @@ C# Implemention of Code repository associated with Learning Algorithms: A Progra
 ![.NET Core](https://github.com/AshkanYarmoradi/Learning-Algorithms/workflows/.NET/badge.svg)
 <a href="https://www.codefactor.io/repository/github/ashkanyarmoradi/learning-algorithms"><img src="https://www.codefactor.io/repository/github/ashkanyarmoradi/learning-algorithms/badge" alt="CodeFactor" /></a>
 <a href="https://codeclimate.com/github/AshkanYarmoradi/Learning-Algorithms/maintainability"><img src="https://api.codeclimate.com/v1/badges/c510fc5d3a7c914f3553/maintainability" /></a>
-<a href="https://codecov.io/gh/AshkanYarmoradi/Learning-Algorithms"><img src="https://codecov.io/gh/AshkanYarmoradi/Learning-Algorithms/branch/main/graph/badge.svg?token=XZKIZAD3RX"/></a>
 <a href="https://gitmoji.carloscuesta.me">
   <img src="https://img.shields.io/badge/gitmoji-%20😜%20😍-FFDD67.svg?style=flat-square" alt="Gitmoji"></a>
 
