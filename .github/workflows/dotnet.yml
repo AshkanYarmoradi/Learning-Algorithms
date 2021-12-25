@@ -22,6 +22,11 @@ jobs:
     - name: Build
       run: dotnet build --no-restore /p:ContinuousIntegrationBuild=true
     - name: Test
-      run: dotnet test --no-build --verbosity normal /p:CollectCoverage=true /p:CoverletOutputFormat=opencover
-    - name: Upload coverage to Codecov
-      uses: codecov/codecov-action@v1
+      run: dotnet test --no-build --verbosity normal
+    - name: Run automated unit and integration tests
+      run: dotnet test LearningAlgorithms/LearningAlgorithms.csproj  /p:CollectCoverage=true /p:CoverletOutput=TestResults/ /p:CoverletOutputFormat=lcov
+    - name: Publish coverage report to coveralls.io   
+      uses: coverallsapp/github-action@master   
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }} 
+        path-to-lcov: LearningAlgorithms/LearningAlgorithms/TestResults/coverage.info
